@@ -1,40 +1,36 @@
-class Character {
-    image;
-    realWidth = 220;
-    realHeight = 270;
-    displayWidth = 110;
-    displayHeight = 135;
-    spriteMatrix = [];
-    currentFrame = 0;
+class Character extends CharAnimation {
 
-    constructor(image, speed) {
-        this.image = image;
-        this.speed = speed;
-        for (let y = 0; y < 4; y++) {
-            for (let x = 0; x < 4; x++) {
-                this.spriteMatrix.push([this.realWidth * x, this.realHeight * y]);
-            }
-        }
-        console.log(this.spriteMatrix);
+    constructor(image) {
+        let realWidth = 220;
+        let realHeight = 270;
+        let displayWidth = 110;
+        let displayHeight = 135;
+        let spriteMatrixColumns = 4;
+        let spriteMatrixLines = 4;
+
+        super(image, realWidth, realHeight, displayWidth, displayHeight, spriteMatrixColumns, spriteMatrixLines);
+        this.createSpriteMatrix();
     }
 
-    draw() {
-        image(this.image, 0,
-            height - this.displayHeight,
-            this.displayWidth,
-            this.displayHeight,
-            this.spriteMatrix[this.currentFrame][0],
-            this.spriteMatrix[this.currentFrame][1],
-            this.realWidth,
-            this.realHeight
-        );
-        this.animateSprite();
+    draw(){
+        // this.move();
+        super.draw();
+        this.applyGravity();
     }
 
-    animateSprite() {
-        this.currentFrame++;
-        if(this.currentFrame == this.spriteMatrix.length -1){
-            this.currentFrame = 0;
-        }
+    isColliding(obj){
+        return collideRectRect(
+            this.posX,
+            this.posY,
+            this.displayWidth * COLLISION_PRECISION_X,
+            this.displayHeight * COLLISION_PRECISION_Y,
+            obj.posX,
+            obj.posY,
+            obj.displayWidth * COLLISION_PRECISION_X,
+            obj.displayHeight * COLLISION_PRECISION_Y);
     }
+
+
+
+
 }
