@@ -23,7 +23,7 @@ class CharAnimation {
         this.displayHeight = displayHeight;
         this.spriteMatrixColumns = spriteMatrixColumns;
         this.spriteMatrixLines = spriteMatrixLines;
-        this.posY = height - this.displayHeight;
+        this.posY = height - this.displayHeight - 40;
         this.initialY = this.posY;
         this.posX = 0
     }
@@ -63,7 +63,6 @@ class CharAnimation {
     }
 
     jump(){
-        this.posY = this.posY - this.jumpYIncrement;
         this.jumpSpeed = this.jumpSpeedIncrement;
     }
 

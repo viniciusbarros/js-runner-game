@@ -1,0 +1,10 @@
+{
+    "name": "vinicius/js-runner-game",
+    "authors": [
+        {
+            "name": "Vinicius Barros",
+            "email": "vmbarross@gmail.com"
+        }
+    ],
+    "require": {}
+}
