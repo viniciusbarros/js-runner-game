@@ -50,6 +50,7 @@ function draw() {
   enemy.draw();
 
   if( mainChar.isColliding(enemy)){
+    gameOver = true;
     showGameOver();
   }
 }
